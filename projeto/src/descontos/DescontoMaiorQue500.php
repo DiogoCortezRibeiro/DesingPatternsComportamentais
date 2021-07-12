@@ -2,9 +2,9 @@
 
     namespace Alura\DesingPattern\descontos;
 
-use Alura\DesingPattern\Orcamento;
+    use Alura\DesingPattern\Orcamento;
 
-class DescontoMaiorQue500 extends Desconto
+    class DescontoMaiorQue500 extends Desconto
     {
         public function calculaDesconto(Orcamento $orcamento)
         {
