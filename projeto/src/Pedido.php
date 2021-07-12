@@ -9,9 +9,6 @@
         public string $cliente;
         public DateTimeInterface $dataFinalizacao;
         public Orcamento $orcamento;
-
-        
-
     }
 
 ?>
