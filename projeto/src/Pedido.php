@@ -6,8 +6,7 @@
 
     class Pedido
     {
-        public string $cliente;
-        public DateTimeInterface $dataFinalizacao;
+        public DadosExtrinsecos $dados;
         public Orcamento $orcamento;
     }
 
