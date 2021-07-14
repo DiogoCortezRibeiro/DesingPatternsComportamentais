@@ -4,15 +4,15 @@
     use Alura\DesingPattern\Estados\EmAprovacao;
     use Alura\DesingPattern\Estados\EstadoOrcamento;
 
-    class Orcamento
+    class Orcamento implements Orcavel
     {
-        public float $valor;
-        public int $quantidadeItens;
+        private array $itens;
         public EstadoOrcamento $estadoAtual;
 
         public function __construct()
         {
             $this->estadoAtual = new EmAprovacao();
+            $this->itens = [];
         }   
 
         public function aplicaDesconExtra()
@@ -33,6 +33,27 @@
         public function finalizar()
         {
             $this->estadoAtual->finalizar($this);
+        }
+
+        public function addItem(Orcavel $item)
+        {
+            $this->itens[] = $item;
+        }
+
+        public function valor() : float
+        {
+            return array_reduce($this->itens, function($valorAcumulado, Orcavel $item) {
+                return $item->valor() + $valorAcumulado;
+            } , 0);
+
+            /*$soma = 0;
+
+            foreach($this->itens as $item)
+            {
+                $soma += $item->valor;
+            }
+
+            return $soma;*/
         }
     }
 ?>
